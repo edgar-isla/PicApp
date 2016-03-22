@@ -1,0 +1,104 @@
+<html ng-app="myapp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="kuro.css">
+    <link rel="stylesheet" href="backgroundColor.css">
+    <link rel="stylesheet" href="lib/toast.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js'></script>
+    <script src="http://darylrowland.github.io/angucomplete/js/app/directives/angucomplete.js"></script>
+    <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+    <script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
+    <script src="lib/toast.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="MyController" style="background-color: lightblue">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">SOCIAL MEDIA SURVEY</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <!--<li><a href="#">Page 2</a></li>-->
+            <!--<li><a href="#">Page 3</a></li>-->
+        </ul>
+    </div>
+</nav>
+<!--<div class="alert alert-info centered"><h1>SOCIAL MEDIA SURVEY</h1></div>-->
+<section class=" centered content bgcolor-4">
+    <span class="input input--kuro">
+        <input class="input__field input__field--kuro" type="text" id="input-7" ng-model="name"/>
+        <label class="input__label input__label--kuro" for="input-7">
+            <span class="lgFont input__label-content input__label-content--kuro">Name</span>
+        </label>
+    </span>
+    <h3 ng-show="name"><span class="redFont">Name: </span>{{name}}</h3>
+
+</section>
+
+<div class="centered alert alert-info">
+    <div>
+        <button class="btn btn-info" data-toggle="collapse" data-target="#demo">Instructions</button>
+        <br>
+        <div id="demo" class="collapse">
+            <br>
+            Look and evaluate images closely and answers the questions below.
+            <br>
+        </div>
+    </div>
+
+    <img class="img-circle" src="A.jpg" alt="choice a">
+</div>
+<div class="centered">
+    <h1>Questions: scale from 1 to 10</h1>
+    <div class="quesDiv">
+    <span> 1) What would you rate this persons appearance? <input class="borderRad" ng-model="answer1"  type="number" min="1" max="10" placeholder="5"></span>
+    <br><br><span>2) What would you rate this persons personality? <input class="borderRad" ng-model="answer2" type="number" min="1" max="10" placeholder="5"></span>
+        <br><br><span>3) What would you rate this persons personality? <input class="borderRad" ng-model="answer3" type="number" min="1" max="10" placeholder="5"></span>
+
+    </div>
+    </div>
+<div ng-show="showComments" class="centered background" id="messagesDiv">
+    <h2>COMMENTS</h2>
+
+    <div  ng-repeat="msg in messages">
+        <div class="border">
+           <span class="commentFont"><em>{{msg.from}}</em>: </span>{{msg.comment}}
+        </div>
+    </div>
+</div>
+<div class="centered">
+    <h3>Write a comment</h3>
+    <textarea rows="3" cols="70" ng-model="comment" placeholder="Your Comment Goes Here...Press Enter/Return key when done">
+</textarea>
+    <div>
+        <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+        <button ng-hide="showSend"  class="btn btn-success" ng-click="addMessage()">Submit Answers</button>
+
+        <button ng-show="showCommentsBtn" class="btn btn-info" ng-click="viewComments()">View Comments</button>
+        <button ng-show="hideCommentsBtn" class="btn btn-warning" ng-click="hideComments()">Hide Comments</button>
+    </div>
+
+</div>
+<div class="large-padded-row">
+    <h3>Example 2 - People</h3>
+    <div class="padded-row">
+        <angucomplete id="ex2" placeholder="Search people" pause="300" selectedobject="selectedPerson" localdata="people" searchfields="firstName,surname" titlefield="firstName,surname" descriptionfield="twitter" imagefield="pic" minlength="1" inputclass="form-control form-control-small" matchclass="highlight" />
+    </div>
+    <div class="" ng-show="selectedPerson">
+        You selected <span class="bold-span">{{selectedPerson.originalObject.firstName}} {{selectedPerson.originalObject.surname}}</span>
+    </div>
+</div>
+
+</body>
+
+</html>
