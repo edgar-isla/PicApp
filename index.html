@@ -12,7 +12,10 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js'></script>
+    <!--for autocomplete-->
+    <script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap-tpls.min.js"></script>
     <script src="http://darylrowland.github.io/angucomplete/js/app/directives/angucomplete.js"></script>
+    <!--......................-->
     <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
     <script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
     <script src="lib/toast.js"></script>
@@ -34,6 +37,7 @@
     </div>
 </nav>
 <!--<div class="alert alert-info centered"><h1>SOCIAL MEDIA SURVEY</h1></div>-->
+
 <section class=" centered content bgcolor-4">
     <span class="input input--kuro">
         <input class="input__field input__field--kuro" type="text" id="input-7" ng-model="name"/>
@@ -89,15 +93,19 @@
     </div>
 
 </div>
-<div class="large-padded-row">
-    <h3>Example 2 - People</h3>
-    <div class="padded-row">
-        <angucomplete id="ex2" placeholder="Search people" pause="300" selectedobject="selectedPerson" localdata="people" searchfields="firstName,surname" titlefield="firstName,surname" descriptionfield="twitter" imagefield="pic" minlength="1" inputclass="form-control form-control-small" matchclass="highlight" />
-    </div>
-    <div class="" ng-show="selectedPerson">
-        You selected <span class="bold-span">{{selectedPerson.originalObject.firstName}} {{selectedPerson.originalObject.surname}}</span>
-    </div>
-</div>
+<!--<div class="centered">-->
+    <!--<angucomplete id="ex2" placeholder="Search people" pause="300" selectedobject="selectedPerson"-->
+                  <!--localdata="people" searchfields="firstName,surname" titlefield="firstName,surname"-->
+                  <!--descriptionfield="twitter" imagefield="pic" minlength="1"-->
+                  <!--inputclass="form-control form-control-small" matchclass="highlight" />-->
+<!--</div>-->
+
+<!--<div>-->
+<!--<input name="states" id="states" type="text" placeholder="enter a state"-->
+       <!--ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8"-->
+       <!--class="form-control">-->
+
+<!--</div>-->
 
 </body>
 

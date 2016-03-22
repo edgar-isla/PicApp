@@ -1,13 +1,23 @@
 /**
  * Created by Owner on 3/21/2016.
  */
-var app = angular.module("myapp", ["firebase","toaster"]);
-
+var app = angular.module("myapp", ["firebase","toaster","angucomplete"]);
+app.factory("myData", [function(){
+    var  names = [
+        {firstName: "Edgar", surname: "Rowland"},
+        {firstName: "Alan", surname: "Partridge"},
+        {firstName: "Annie", surname: "Rowland"}
+    ];
+    return {
+        getNames: names
+    };
+}]);
 
 app.controller("MyController", MyController);
-MyController.$inject = ['$scope','$firebase','toaster'];
+MyController.$inject = ['$scope','$firebase','toaster','myData'];
 
-function MyController($scope, $firebase, toaster) {
+function MyController($scope, $firebase, toaster, myData) {
+    $scope.people = myData.getNames;
     $scope.showSend=false;
     $scope.showCommentsBtn=false;
     $scope.showComments=false;
@@ -40,7 +50,7 @@ function MyController($scope, $firebase, toaster) {
         else {
             $scope.showSend=true;
             $scope.showCommentsBtn=true;
-            toaster.pop('success', "Succesfully Submitted:", "Thanks " + $scope.name);
+            toaster.pop('success', "Successfully Submitted:", "Thanks " + $scope.name);
             return $scope.messages.$add({
                 from: $scope.name, comment: $scope.comment,
                 Question1: $scope.answer1,
