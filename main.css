@@ -2,7 +2,7 @@
 .redFont{
     color: red;}
 .background{background-color: #2f3238; color: #fff;}
-.border{text-align: center; border: 2px white dotted;margin: .7% 20% .3% 20%}
+.border{text-align: center; border: 2px white inset;margin: .7% 20% .7% 20%;padding:1% 0 1% 0}
 .commentFont{font-size: large; color: #6d8dff
 }
 .borderRad{border-radius: 30%}
