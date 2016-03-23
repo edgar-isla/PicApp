@@ -6,7 +6,7 @@
 .commentFont{font-size: large; color: #6d8dff
 }
 .borderRad{border-radius: 30%}
-.quesDiv{background-color: white; margin:0 30% 0 30%; padding: 2% 0 2% 0}
+.quesDiv{background-color: white; padding: 2% 0 2% 0; text-align: center}
 
 /*carousel*/
 

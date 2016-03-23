@@ -22,7 +22,7 @@
     <script src="app.js"></script>
 </head>
 
-<body ng-controller="MyController" style="background-color: lightblue">
+<body class="container-fluid" ng-controller="MyController" style="background-color: lightblue">
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -62,15 +62,20 @@
 
     <img class="img-circle" src="A.jpg" alt="choice a">
 </div>
-<div class="centered">
-    <h1>Questions: scale from 1 to 10</h1>
-    <div class="quesDiv">
-    <span> 1) What would you rate this persons appearance? <input class="borderRad" ng-model="answer1"  type="number" min="1" max="10" placeholder="5"></span>
-    <br><br><span>2) What would you rate this persons personality? <input class="borderRad" ng-model="answer2" type="number" min="1" max="10" placeholder="5"></span>
-        <br><br><span>3) What would you rate this persons personality? <input class="borderRad" ng-model="answer3" type="number" min="1" max="10" placeholder="5"></span>
+<div class="centered row">
+    <div class="col-sm-0 col-md-3"></div>
+    <div class="col-sm-12 col-md-6" style="background-color:lavenderblush;">
+        <h1>Questions: scale from 1 to 10</h1>
+        <div class="quesDiv">
+            <span> 1) What would you rate this persons appearance? <input class="borderRad" ng-model="answer1"  type="number" min="1" max="10" placeholder="5"></span>
+            <br><br><span>2) What would you rate this persons personality? <input class="borderRad" ng-model="answer2" type="number" min="1" max="10" placeholder="5"></span>
+            <br><br><span>3) What would you rate this persons personality? <input class="borderRad" ng-model="answer3" type="number" min="1" max="10" placeholder="5"></span>
 
+        </div>
     </div>
-    </div>
+    <div class="col-sm-2 col-md-3" style="background-color:lavender;"></div>
+</div>
+
 <div ng-show="showComments" class="centered background" id="messagesDiv">
     <h2>COMMENTS</h2>
 
