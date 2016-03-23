@@ -51,7 +51,7 @@
 
 <div class="row centered alert alert-info">
     <div class="col-sm-12">
-        <button class="btn btn-info" data-toggle="collapse" data-target="#demo">Instructions</button>
+        <button class="btn btn-info" data-toggle="collapse" data-target="#demo">Click For Instructions</button>
         <br>
         <div id="demo" class="collapse">
             <br>
@@ -70,9 +70,9 @@
     <div class="col-sm-12 col-md-6" style="background-color:lavenderblush;">
         <h1>Questions: scale from 1 to 10</h1>
         <div class="quesDiv">
-            <span> 1) What would you rate this persons appearance? <input class="borderRad" ng-model="answer1"  type="number" min="1" max="10" placeholder="5"></span>
-            <br><br><span>2) What would you rate this persons personality? <input class="borderRad" ng-model="answer2" type="number" min="1" max="10" placeholder="5"></span>
-            <br><br><span>3) What would you rate this persons personality? <input class="borderRad" ng-model="answer3" type="number" min="1" max="10" placeholder="5"></span>
+            <span class="qFont"> 1) What would you rate this persons appearance? <input class="borderRad" ng-model="answer1"  type="number" min="1" max="10" placeholder="5"></span>
+            <br><br><span class="qFont">2) What would you rate this persons personality? <input class="borderRad" ng-model="answer2" type="number" min="1" max="10" placeholder="5"></span>
+            <br><br><span class="qFont">3) What would you rate this persons personality? <input class="borderRad" ng-model="answer3" type="number" min="1" max="10" placeholder="5"></span>
 
         </div>
     </div>
@@ -92,8 +92,8 @@
     <div class="col-sm-12">
         <h3>Write a comment</h3>
     </div>
-    <div class="col-sm-12">
-         <textarea rows="3" cols="60" ng-model="comment" placeholder="Your Comment Goes Here...Press Enter/Return key when done"></textarea>
+    <div class="centered col-sm-12">
+         <textarea class="qfont" ng-model="comment" placeholder="Your Comment Goes Here...Press Enter/Return key when done"></textarea>
     </div>
 
     <div class="col-sm-12" style="margin-top: 2%">
@@ -104,6 +104,7 @@
             <button ng-show="hideCommentsBtn" class="btn btn-warning" ng-click="hideComments()">Hide Comments</button>
     </div>
 </div>
+
 <!--<div class="centered">-->
     <!--<angucomplete id="ex2" placeholder="Search people" pause="300" selectedobject="selectedPerson"-->
                   <!--localdata="people" searchfields="firstName,surname" titlefield="firstName,surname"-->
