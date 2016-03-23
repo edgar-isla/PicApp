@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <img class="img-circle" src="A.jpg" alt="choice a">
+    <img class="img-fluid img-circle" src="A.jpg" alt="choice a">
 </div>
 <div class="centered row">
     <div class="col-sm-0 col-md-3"></div>
@@ -85,18 +85,19 @@
         </div>
     </div>
 </div>
-<div class="centered">
-    <h3>Write a comment</h3>
+<div class="centered row">
+    <div class="col-sm-12">
+        <h3>Write a comment</h3>
     <textarea rows="3" cols="70" ng-model="comment" placeholder="Your Comment Goes Here...Press Enter/Return key when done">
-</textarea>
-    <div>
-        <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
-        <button ng-hide="showSend"  class="btn btn-success" ng-click="addMessage()">Submit Answers</button>
+    </textarea>
+        <div style="margin-top: 2%">
+            <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+            <button ng-hide="showSend"  class="btn btn-success" ng-click="addMessage()">Submit Answers</button>
 
-        <button ng-show="showCommentsBtn" class="btn btn-info" ng-click="viewComments()">View Comments</button>
-        <button ng-show="hideCommentsBtn" class="btn btn-warning" ng-click="hideComments()">Hide Comments</button>
+            <button ng-show="showCommentsBtn" class="btn btn-info" ng-click="viewComments()">View Comments</button>
+            <button ng-show="hideCommentsBtn" class="btn btn-warning" ng-click="hideComments()">Hide Comments</button>
+        </div>
     </div>
-
 </div>
 <!--<div class="centered">-->
     <!--<angucomplete id="ex2" placeholder="Search people" pause="300" selectedobject="selectedPerson"-->
