@@ -49,8 +49,8 @@
 
 </section>
 
-<div class="centered alert alert-info">
-    <div>
+<div class="row centered alert alert-info">
+    <div class="col-sm-12">
         <button class="btn btn-info" data-toggle="collapse" data-target="#demo">Instructions</button>
         <br>
         <div id="demo" class="collapse">
@@ -59,8 +59,11 @@
             <br>
         </div>
     </div>
+    <div class="col-sm-12" style="margin-top: 2%">
+        <img class="img-responsive center-block img-circle" src="A.jpg" alt="choice a">
 
-    <img class="img-fluid img-circle" src="A.jpg" alt="choice a">
+    </div>
+
 </div>
 <div class="centered row">
     <div class="col-sm-0 col-md-3"></div>
@@ -88,15 +91,17 @@
 <div class="centered row">
     <div class="col-sm-12">
         <h3>Write a comment</h3>
-    <textarea rows="3" cols="70" ng-model="comment" placeholder="Your Comment Goes Here...Press Enter/Return key when done">
-    </textarea>
-        <div style="margin-top: 2%">
+    </div>
+    <div class="col-sm-12">
+         <textarea rows="3" cols="60" ng-model="comment" placeholder="Your Comment Goes Here...Press Enter/Return key when done"></textarea>
+    </div>
+
+    <div class="col-sm-12" style="margin-top: 2%">
             <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
             <button ng-hide="showSend"  class="btn btn-success" ng-click="addMessage()">Submit Answers</button>
 
             <button ng-show="showCommentsBtn" class="btn btn-info" ng-click="viewComments()">View Comments</button>
             <button ng-show="hideCommentsBtn" class="btn btn-warning" ng-click="hideComments()">Hide Comments</button>
-        </div>
     </div>
 </div>
 <!--<div class="centered">-->
