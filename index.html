@@ -1,5 +1,6 @@
 <html ng-app="myapp">
 <head>
+    <title>Media Pic</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -79,21 +80,28 @@
     <div class="col-sm-2 col-md-3" style="background-color:lavender;"></div>
 </div>
 
-<div ng-show="showComments" class="centered background" id="messagesDiv">
+<div ng-show="showComments" class="centered background" id="messagesDiv"  >
     <h2>COMMENTS</h2>
 
     <div  ng-repeat="msg in messages">
         <div class="border">
-           <span class="commentFont"><em>{{msg.from}}</em>: </span><span class="qFont">{{msg.comment}}</span>
+           <span class="commentFont"><em>{{msg.from}}</em>: </span><span class="qFont">{{msg.comment}} Q1:{{msg.Question1}}</span>
+
         </div>
     </div>
+    <tr>
+        <td>Total To Question(1) : =</td>
+        <td>{{messages[lastId].totQuestion1}}</td>
+
+    </tr>
 </div>
+
 <div class="centered row">
     <div class="col-sm-12">
         <h3>Write a comment</h3>
     </div>
-    <div class="centered col-sm-12">
-         <textarea class="qfont" ng-model="comment" placeholder="Your Comment Goes Here....."></textarea>
+    <div class="commentDiv centered col-sm-12 col-md-12">
+         <textarea class="qfont2" ng-model="comment" placeholder="Your Comment Goes Here....."></textarea>
     </div>
 
     <div class="col-sm-12" style="margin-top: 2%">
@@ -102,6 +110,9 @@
 
             <button ng-show="showCommentsBtn" class="btn btn-info" ng-click="viewComments()">View Comments</button>
             <button ng-show="hideCommentsBtn" class="btn btn-warning" ng-click="hideComments()">Hide Comments</button>
+    </div>
+    <div>
+        <button class="btn btn-success" ng-click="showId()">Show Id</button>
     </div>
 </div>
 

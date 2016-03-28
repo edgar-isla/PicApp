@@ -8,6 +8,12 @@
 .borderRad{border-radius: 30%}
 .quesDiv{background-color: white; padding: 2% 0 2% 0; text-align: center}
 .qFont{font-size: large}
+.qFont2{font-size:x-large}
+.commentDiv{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
 
 /*carousel*/
 
