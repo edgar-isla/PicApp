@@ -38,10 +38,6 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
     };
     var ref = new Firebase("https://mediapic.firebaseio.com/");
     $scope.messages = $firebase(ref);
-    $scope.showId= function () {
-        console.log($scope.q1Total);
-    };
-
     $scope.addMessage = function() {
         if($scope.name== undefined || $scope.name=="")
         {
