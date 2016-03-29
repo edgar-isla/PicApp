@@ -39,7 +39,6 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
         $scope.hideCommentsBtn=false;
         $scope.showCommentsBtn=true;
         $scope.showComments=false;
-
     };
     var ref = new Firebase("https://mediapic.firebaseio.com/");
     $scope.messages = $firebase(ref);
@@ -51,6 +50,18 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
         else if($scope.comment== undefined || $scope.comment=="")
         {
             toaster.pop('warning', "Comment area is blank.", "Please type a comment");
+        }
+        else if($scope.answer1==undefined)
+        {
+            toaster.pop('warning', "Question 1 is not valid", "Scale is from 1-10");
+        }
+        else if($scope.answer2==undefined)
+        {
+            toaster.pop('warning', "Question 2 is not valid", "Scale is from 1-10");
+        }
+        else if($scope.answer3==undefined)
+        {
+            toaster.pop('warning', "Question 3 is not valid", "Scale is from 1-10");
         }
         else {
             $scope.showSend=true;
@@ -64,7 +75,6 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
             }).then(function (ref) {
                 //console.log(ref.name()); // console log current id
                 $scope.lastId= ref.name();
-
                 var keys = $scope.messages.$getIndex();
                 angular.forEach(keys, function(key) {
                     $scope.q1Total = $scope.q1Total+$scope.messages[key].Question1;
@@ -73,7 +83,7 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
                     $scope.keyLength=keys.length;
                 });
                 angular.forEach(keys, function (key) {
-                    console.log(keys.length);
+                    //console.log(keys.length);
                     $scope.messages[key].totQuestion1=$scope.q1Total;
                     $scope.messages[key].totQuestion2=$scope.q2Total;
                     $scope.messages[key].totQuestion3=$scope.q3Total;
@@ -81,18 +91,12 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
                     $scope.messages.$save(key);
                 });
                 angular.forEach(keys,function (key){
-
                     $scope.messages[key].Q1Avg=$scope.messages[key].totQuestion1/$scope.messages[key].CurrLength;
                     $scope.messages[key].Q2Avg=$scope.messages[key].totQuestion2/$scope.messages[key].CurrLength;
                     $scope.messages[key].Q3Avg=$scope.messages[key].totQuestion3/$scope.messages[key].CurrLength;
                     $scope.messages.$save(key);
-
                 });
-                //$scope.messages[recordUid].totQuestion1=$scope.q1Total;
-                //$scope.messages.$save(recordUid);
             });
-            $scope.comment = "";
         }
     };
-
 }
