@@ -127,3 +127,25 @@ input#img-5:checked ~ .nav-dots label#img-dot-5,
 input#img-6:checked ~ .nav-dots label#img-dot-6 {
     background: rgba(0, 0, 0, 0.8);
 }
+/*gauge*/
+.gauge-container {
+    width: 356px;
+    height: 356px;
+    text-align: center;
+    margin: 0 auto 30px auto;
+}
+
+.gauge-container > span {
+    display: block;
+    width: 340px;
+    height: 290px;
+    margin: 0 auto;
+}
+
+.gauge-container .k-slider {
+    margin-top: -15px;
+    width: 140px;
+}
+.gaugeBack{background-color: #bcd4fd
+}
+.blackFont{color: black}

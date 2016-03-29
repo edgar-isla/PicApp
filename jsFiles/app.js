@@ -1,7 +1,7 @@
 /**
  * Created by Owner on 3/21/2016.
  */
-var app = angular.module("myapp", ["firebase","toaster","angucomplete"]);
+var app = angular.module("myapp", ["firebase","toaster","angucomplete","kendo.directives"]);
 app.factory("myData", [function(){
     var  names = [
         {firstName: "Edgar", surname: "Rowland"},
@@ -24,7 +24,12 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
     $scope.hideCommentsBtn=false;
     $scope.q1Total=0;
     $scope.q2Total=0;
+    $scope.q3Total=0;
+    $scope.keyLength=0;
     $scope.lastId="";
+    $scope.averageQuestion1=0;
+    $scope.averageQuestion2=0;
+    $scope.averageQuestion3=0;
     $scope.viewComments= function () {
         $scope.showComments=true;
         $scope.hideCommentsBtn=true;
@@ -59,37 +64,35 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
             }).then(function (ref) {
                 //console.log(ref.name()); // console log current id
                 $scope.lastId= ref.name();
-                //$scope.storedId.push(recordUid);
-                //$scope.messages[recordUid].id=recordUid;
-                //$scope.messages.$save(recordUid);
+
                 var keys = $scope.messages.$getIndex();
                 angular.forEach(keys, function(key) {
                     $scope.q1Total = $scope.q1Total+$scope.messages[key].Question1;
                     $scope.q2Total = $scope.q2Total+$scope.messages[key].Question2;
-
-                    //$scope.totQuestion1=$scope.q1Total;
-                    //$scope.messages[key].totQuestion1=$scope.q1Total;
-                    //$scope.messages.$save(key);
-                    //$scope.messages[key].totQuestion1=$scope.messages[recordUid].totQuestion1;
-                    //$scope.messages.$save(key);
-                    //console.log(key);
-                    //console.log($scope.lastId);
-                    console.log(keys.length);
+                    $scope.q3Total = $scope.q3Total+$scope.messages[key].Question3;
+                    $scope.keyLength=keys.length;
                 });
                 angular.forEach(keys, function (key) {
+                    console.log(keys.length);
                     $scope.messages[key].totQuestion1=$scope.q1Total;
                     $scope.messages[key].totQuestion2=$scope.q2Total;
+                    $scope.messages[key].totQuestion3=$scope.q3Total;
+                    $scope.messages[key].CurrLength=$scope.keyLength;
                     $scope.messages.$save(key);
+                });
+                angular.forEach(keys,function (key){
+
+                    $scope.messages[key].Q1Avg=$scope.messages[key].totQuestion1/$scope.messages[key].CurrLength;
+                    $scope.messages[key].Q2Avg=$scope.messages[key].totQuestion2/$scope.messages[key].CurrLength;
+                    $scope.messages[key].Q3Avg=$scope.messages[key].totQuestion3/$scope.messages[key].CurrLength;
+                    $scope.messages.$save(key);
+
                 });
                 //$scope.messages[recordUid].totQuestion1=$scope.q1Total;
                 //$scope.messages.$save(recordUid);
             });
-
-            //$scope.records.$add({'name': this.record}).then(function(ref) {
-            //    var recordUid = ref.name(); <-- ref.name() is the uid of the object we've just submitted.
-            //    $scope.records[recordUid].id = recordUid; <-- Adding of the uid as an id param
-            //    $scope.records.$save(recordUid); <-- finally we tell it what record to save using the uid.
             $scope.comment = "";
         }
-    }
+    };
+
 }
