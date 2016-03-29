@@ -90,7 +90,6 @@
 
 <div ng-show="showComments" class=" row centered background" id="messagesDiv"  >
     <h2>COMMENTS</h2>
-
     <div  ng-repeat="msg in messages">
         <div class="border">
            <span class="commentFont"><em>{{msg.from}}</em>: </span><span class="qFont">{{msg.comment}}</span>
@@ -98,6 +97,8 @@
         </div>
     </div>
     <h1>Class Statistics</h1>
+    <h5>Submitted Surveys :<span class="redFont"> {{messages[lastId].CurrLength}}</span></h5>
+
     <div class="col-sm-6 col-md-4 gaugeBack">
                 <div class="gauge-container img-responsive center-block">
             <span kendo-radialgauge
