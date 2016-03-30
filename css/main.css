@@ -2,7 +2,7 @@
 .redFont{
     color: red;}
 .background{background-color: #2f3238; color: #fff;}
-.border{text-align: center; border: 2px white inset;margin: .7% 20% .7% 20%;padding:1% 0 1% 0}
+.border{text-align: center; border: 2px white inset;margin: .7% 0 .7% 0;padding:1% 0 1% 0}
 .commentFont{font-size: large; color: #6d8dff
 }
 .borderRad{border-radius: 30%}
@@ -146,7 +146,7 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
     margin-top: -15px;
     width: 140px;
 }
-.gaugeBack{background-color: #bcd4fd
+.gaugeBack{background-color: #bad8d6
 }
 .blackFont{color: black}
 .addColor{color: #40d530

@@ -92,18 +92,28 @@
 </div>
 
 <div ng-show="showComments" class=" row centered background" id="messagesDiv"  >
-    <h2>COMMENTS</h2>
-    <div  ng-repeat="msg in messages">
-        <div class="border">
-           <span class="commentFont"><em>{{msg.from}}</em>:<br> </span><span class="qFont">{{msg.comment}}</span>
-            <br><button class="btn btn-primary" ng-disabled="isDisabled" ng-click="likeAdd(msg.Id)"><i class="fa fa-thumbs-o-up fa-lg"> Like This Comment</i>
-            <span class="badge">{{msg.commentLikes}}</span></button>
+
+
+    <div class="col-sm-0 col-md-2"></div>
+    <div class="col-sm-12 col-md-8">
+        <div class="border" ng-repeat="msg in messages">
+        <span class="commentFont"><em>{{msg.from}}</em>:<br> </span><span class="qFont">{{msg.comment}}</span>
+        <br><button class="btn btn-primary" ng-disabled="isDisabled" ng-click="likeAdd(msg.Id)"><i class="fa fa-thumbs-o-up fa-lg"> Like This Comment</i>
+        <span class="badge">{{msg.commentLikes}}</span></button>
         </div>
     </div>
-    <h1>Class Statistics</h1>
-    <div class="border">
-    <h2>Submitted Surveys :<span class="redFont"> {{messages[lastId].CurrLength}}</span></h2>
+    <div class="col-sm-0 col-md-2"></div>
+
+    <div class="col-sm-12 col-md-12">
+        <div class="col-sm-2 col-md-3"></div>
+        <div class="col-sm-8 col-md-6 border">
+            <h1>Class Statistics</h1>
+            <h3>Submitted Surveys :<span class="redFont"> {{messages[lastId].CurrLength}}</span></h3>
+        </div>
+        <div class="col-sm-2 col-md-3"></div>
+
     </div>
+
     <div class="col-sm-6 col-md-4 gaugeBack">
                 <div class="gauge-container img-responsive center-block">
             <span kendo-radialgauge
@@ -148,8 +158,8 @@
             <toaster-container toaster-options="{'time-out': 3200, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
             <button ng-hide="showSend"  class="btn btn-success largeFont" ng-click="addMessage()">Submit Answers <i class="addColor fa fa-plus fa-lg"></i></button>
 
-            <button ng-show="showCommentsBtn" class="btn btn-info largeFont" ng-click="viewComments()"><i class="fa fa-eye"></i> View Comments</button>
-            <button ng-show="hideCommentsBtn" class="btn btn-warning" ng-click="hideComments()">Hide Comments</button>
+            <button ng-show="showCommentsBtn" class="btn btn-info largeFont" ng-click="viewComments()"><i class="fa fa-expand"></i> View Comments</button>
+            <button ng-show="hideCommentsBtn" class="btn btn-warning" ng-click="hideComments()"><i class="fa fa-compress"></i> Hide Comments</button>
     </div>
 </div>
 
@@ -161,7 +171,7 @@
         <div class=" row nav navbar-nav">
             <div class="col-sm-12">
                 <h3>This is a survey for a class project.  This programs framework is AngularJs( along with
-                    AngularFire), Bootstrap was used for appearance and for mobile re-adjustment, and Firebase
+                    AngularFire), Bootstrap was used for appearance and for responsiveness, and Firebase
                     for storing data and displaying data asynchronously. </h3>
             </div>
          </div>
