@@ -149,3 +149,6 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 .gaugeBack{background-color: #bcd4fd
 }
 .blackFont{color: black}
+.addColor{color: #40d530
+}
+.largeFont{font-size: x-large}

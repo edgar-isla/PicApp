@@ -16,7 +16,7 @@ app.factory("myData", [function(){
 app.controller("MyController", MyController);
 MyController.$inject = ['$scope','$firebase','toaster','myData','$timeout'];
 
-function MyController($scope, $firebase, toaster, myData, $timeout) {
+function MyController($scope, $firebaseArray, toaster, myData, $timeout) {
     $scope.people = myData.getNames;
     $scope.showSend=false;
     $scope.showCommentsBtn=false;
@@ -30,6 +30,15 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
     $scope.averageQuestion1=0;
     $scope.averageQuestion2=0;
     $scope.averageQuestion3=0;
+    $scope.commentLikes=0;
+    $scope.likeAdd= function (userId) {
+        //disable the button after clicked once instead of doing a manual check.
+
+        $scope.messages[userId].commentLikes= ($scope.messages[userId].commentLikes)+1;
+
+        $scope.messages.$save(userId);
+        $scope.isDisabled = true;
+    };
     $scope.viewComments= function () {
         $scope.showComments=true;
         $scope.hideCommentsBtn=true;
@@ -41,7 +50,7 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
         $scope.showComments=false;
     };
     var ref = new Firebase("https://mediapic.firebaseio.com/");
-    $scope.messages = $firebase(ref);
+    $scope.messages = $firebaseArray(ref);
     $scope.addMessage = function() {
         if($scope.name== undefined || $scope.name=="")
         {
@@ -71,11 +80,15 @@ function MyController($scope, $firebase, toaster, myData, $timeout) {
                 from: $scope.name, comment: $scope.comment,
                 Question1: $scope.answer1,
                 Question2: $scope.answer2,
-                Question3: $scope.answer3
+                Question3: $scope.answer3,
+                commentLikes:$scope.commentLikes
             }).then(function (ref) {
-                //console.log(ref.name()); // console log current id
+                console.log(ref.name()); // console log current id
                 $scope.lastId= ref.name();
                 var keys = $scope.messages.$getIndex();
+                //console.log(keys[0]);// keys is an array that contains an array with keys.
+                $scope.messages[$scope.lastId].Id=$scope.lastId;
+                $scope.messages.$save($scope.lastId);
                 angular.forEach(keys, function(key) {
                     $scope.q1Total = $scope.q1Total+$scope.messages[key].Question1;
                     $scope.q2Total = $scope.q2Total+$scope.messages[key].Question2;

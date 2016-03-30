@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="css/kuro.css">
     <link rel="stylesheet" href="css/backgroundColor.css">
     <link rel="stylesheet" href="lib/toast.css">
+    <!--fontawesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
@@ -92,13 +95,15 @@
     <h2>COMMENTS</h2>
     <div  ng-repeat="msg in messages">
         <div class="border">
-           <span class="commentFont"><em>{{msg.from}}</em>: </span><span class="qFont">{{msg.comment}}</span>
-
+           <span class="commentFont"><em>{{msg.from}}</em>:<br> </span><span class="qFont">{{msg.comment}}</span>
+            <br><button class="btn btn-primary" ng-disabled="isDisabled" ng-click="likeAdd(msg.Id)"><i class="fa fa-thumbs-o-up fa-lg"> Like This Comment</i>
+            <span class="badge">{{msg.commentLikes}}</span></button>
         </div>
     </div>
     <h1>Class Statistics</h1>
-    <h5>Submitted Surveys :<span class="redFont"> {{messages[lastId].CurrLength}}</span></h5>
-
+    <div class="border">
+    <h2>Submitted Surveys :<span class="redFont"> {{messages[lastId].CurrLength}}</span></h2>
+    </div>
     <div class="col-sm-6 col-md-4 gaugeBack">
                 <div class="gauge-container img-responsive center-block">
             <span kendo-radialgauge
@@ -141,9 +146,9 @@
 
     <div class="col-sm-12" style="margin-top: 2%">
             <toaster-container toaster-options="{'time-out': 3200, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
-            <button ng-hide="showSend"  class="btn btn-success" ng-click="addMessage()">Submit Answers</button>
+            <button ng-hide="showSend"  class="btn btn-success largeFont" ng-click="addMessage()">Submit Answers <i class="addColor fa fa-plus fa-lg"></i></button>
 
-            <button ng-show="showCommentsBtn" class="btn btn-info" ng-click="viewComments()">View Comments</button>
+            <button ng-show="showCommentsBtn" class="btn btn-info largeFont" ng-click="viewComments()"><i class="fa fa-eye"></i> View Comments</button>
             <button ng-show="hideCommentsBtn" class="btn btn-warning" ng-click="hideComments()">Hide Comments</button>
     </div>
 </div>
